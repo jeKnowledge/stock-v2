@@ -8,8 +8,10 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
-#User bcrypt to encript passwords
+#Encript passwords
 gem 'bcrypt', '3.1.11'
+#Create random things
+gem 'faker', '1.6.6' 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

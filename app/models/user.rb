@@ -11,4 +11,6 @@ class User < ApplicationRecord
 	   		length: {minimum: 5}
 
     has_secure_password
+
+    has_many :itens
 end
