@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
+#testing
+gem 'rails-controller-testing'
 #Use bootstrap with HTML
 gem 'bootstrap-sass', '3.3.6'
 #Encript passwords
