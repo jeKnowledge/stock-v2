@@ -10,6 +10,10 @@ end
 gem 'rails', '~> 5.0.2'
 #Use bootstrap with HTML
 gem 'bootstrap-sass', '3.3.6'
+#Encript passwords
+gem 'bcrypt', '3.1.11'
+#Create random things
+gem 'faker', '1.6.6' 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
