@@ -1,0 +1,40 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	padding-top: 120px;
+	padding-left: 130px;
+	padding-right: 130px;
+	width: 50px;
+	background-color: white;
+	color: black;
+}
+
+section {
+	overflow: auto;
+}
+
+textarea {
+	resize: horizontal;
+	text-align: vertical;
+}
+
+.center {
+	text-align: center;
+
+	h1 {
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	h2{
+		text-align: center;
+	}
+	h3{
+		p{	
+			font-size: 1em;
+			margin-bottom: 10px;
+			text-align: left;	
+		}
+		text-align: left;
+	}
+}
