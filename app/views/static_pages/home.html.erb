@@ -6,13 +6,30 @@
 		This is app keeps track of our belongings.
 	</h2>
 
-	<%= link_to "Sign up", '#', class: "btn btn-lg btn-primary" %>
+	<h3>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<%= form_for(:session, url: login_path) do |f| %>
+
+					<%= f.label :email %>
+					<%= f.email_field :email, class: 'form-control' %>
+
+					<%= f.label :password %>
+					<%= f.password_field :password, class: 'form-control' %>
+					<br>
+					<%= f.submit "Log in", class: "btn btn-primary" %>
+				<% end %>
+				<br>	
+				<p>If you are new <%= link_to "Sign up!", signup_path %></p>
+			</div>
+		</div>
+
 </div>
 <div>
 	<div>
 		<%= link_to image_tag("jeknowledge.png", alt: "Jeknowledge logo"),
 			'http://jeknowledge.pt/' %>
-	</div>
+</div>
 <div>
 	<%= link_to image_tag("github.png", alt: "GitHub logo"),
 		'https://github.com/jeKnowledge/stock-v2' %>

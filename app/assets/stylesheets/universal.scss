@@ -2,7 +2,12 @@
 @import "bootstrap";
 
 body {
-	padding-top: 60px;
+	padding-top: 120px;
+	padding-left: 130px;
+	padding-right: 130px;
+	width: 50px;
+	background-color: white;
+	color: black;
 }
 
 section {
@@ -10,7 +15,8 @@ section {
 }
 
 textarea {
-	resize: vertical;
+	resize: horizontal;
+	text-align: vertical;
 }
 
 .center {
@@ -18,5 +24,17 @@ textarea {
 
 	h1 {
 		margin-bottom: 10px;
+		text-align: center;
+	}
+	h2{
+		text-align: center;
+	}
+	h3{
+		p{	
+			font-size: 1em;
+			margin-bottom: 10px;
+			text-align: left;	
+		}
+		text-align: left;
 	}
 }
