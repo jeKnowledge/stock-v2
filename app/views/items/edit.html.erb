@@ -1,0 +1,11 @@
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@item) do |f| %>
+      <%= render 'shared/items_error_messages' %>
+      <%= f.label "Test" %> 
+      <%= f.check_box :state %>
+      <%= f.submit "Save", class: "btn btn-primary"%>
+    <% end %>
+  </div>
+</div>

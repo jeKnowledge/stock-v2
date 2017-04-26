@@ -1,0 +1,11 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.items{
+  li{
+    font-size: 40px;
+    font-family: "Arial";
+    font-weight: 900;
+    list-style-type: none;
+  }
+}

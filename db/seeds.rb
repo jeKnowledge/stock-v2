@@ -11,7 +11,7 @@ end
 
 150.times do |i|
 	Item.create!(name: Faker::Lorem.characters(5),
-							 state: true)
+							 state: false)
 
 end
 

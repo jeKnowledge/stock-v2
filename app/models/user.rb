@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+  has_many :items
+
+
   validates :name, presence: true, 
     length: {minimum: 5, maximum: 30}
 
@@ -12,5 +15,4 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_many :itens
 end

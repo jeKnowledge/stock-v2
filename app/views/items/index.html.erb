@@ -1,0 +1,24 @@
+<% provide(:title, 'All Itens') %>
+<h1>All Itens</h1>
+
+<ul class="items">
+  <% @items.each do |item| %>
+    <li>
+      <% if item.state && (@cuser_id == item.user_id)%>
+        <%= link_to item.name, items_update_path(item.id), method: :put %>
+        You have the item
+      <% end %>
+      <% if item.state && (@cuser_id != item.user_id) %>
+        <%= item.name %>
+        The user 
+        <%= User.find(item.user_id).name %>
+        has the item
+      <% end %>
+      <% if !item.state %>
+        <%= link_to item.name, items_update_path(item.id), method: :put %>
+      You can aquire the item 
+
+      <% end %> 
+    </li>
+  <% end %>
+</ul>
