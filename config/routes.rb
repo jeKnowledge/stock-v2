@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  put 'items/:id', to: 'items#update', as: 'items_update'
 
   resources :users
   resources :items 
