@@ -1,24 +1,56 @@
 <% provide(:title, 'All Itens') %>
-<h1>All Itens</h1>
 
 <ul class="items">
-  <% @items.each do |item| %>
-    <li>
-      <% if item.state && (@cuser_id == item.user_id)%>
-        <%= link_to item.name, items_update_path(item.id), method: :put %>
-        You have the item
-      <% end %>
-      <% if item.state && (@cuser_id != item.user_id) %>
-        <%= item.name %>
-        The user 
-        <%= User.find(item.user_id).name %>
-        has the item
-      <% end %>
-      <% if !item.state %>
-        <%= link_to item.name, items_update_path(item.id), method: :put %>
-      You can aquire the item 
 
+  <h1>Your itens</h1>
+  <li>
+    <% @items.each do |item| %>
+      <% if item.state && (@cuser_id == item.user_id)%>
+        <%= item.name %>
+        <div  style="display:inline-block;" class="items_display">
+          <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>
+        </div>
+        <div  style="display:inline-block;" class="items_display">
+          <%= button_to "return", items_update_path(item.id), class: "btn btn-primary", method: :put %>
+        </div>
+        <br>
+        <br>
+      <% end %>
+    <% end %>
+  </li>
+
+  <h1 style="text-align:left;">Itens not available
+    <span style="float:right;"> User </span> 
+  </h1>
+
+  <li>
+    <% @items.each do |item| %>
+      <% if item.state && (@cuser_id != item.user_id) %>
+        <p style="text-align:left;">
+          <%= item.name %>
+          <span style="float:right;"> 
+            <%= User.find(item.user_id).name %>
+            <br>
+          </span>
+        </p>
+      <% end %>
+    <% end %>
+  </li>
+
+  <h1>Itens available</h1>
+  <li>
+    <% @items.each do |item| %>
+      <% if !item.state %>
+          <%= item.name %>
+        <div style="display:inline-block;" class="items_display">
+          <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>
+        </div>
+        <div style="display:inline-block;" class="items_display">
+          <%= button_to "Aquire", items_update_path(item.id), class: "btn btn-primary", method: :put %>
+        </div>
+        <br>
+        <br>
       <% end %> 
-    </li>
-  <% end %>
+    <% end %>
+  </li>
 </ul>

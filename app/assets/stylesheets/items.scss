@@ -1,11 +1,41 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+input.btn.btn-primary {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.button_dist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item_button {
+  display: inline-block;
+  float: left;
+}
 
 .items{
+
   li{
-    font-size: 40px;
-    font-family: "Arial";
+    list-style: none;
+    font-size: 50px;
     font-weight: 900;
-    list-style-type: none;
   }
+  h1{
+    text-align: left;
+    font-size: 60px;
+    font-weight: 900;
+  }
+
+}
+
+.items_display{
+  display: inline-block;;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  float: right;
+  margin-left: 40px;
 }
