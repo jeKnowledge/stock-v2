@@ -19,16 +19,22 @@ input.btn.btn-primary {
 .items{
 
   li{
+    border-radius: 10px;
+    border: 2px solid #6666ff;
     list-style: none;
     font-size: 50px;
     font-weight: 900;
+    color: black;
+    background-color: #E6E6FA;
+    margin-top: 10px;
+
   }
+  
   h1{
     text-align: left;
     font-size: 60px;
     font-weight: 900;
   }
-
 }
 
 .items_display{
@@ -37,5 +43,12 @@ input.btn.btn-primary {
   justify-content: space-between;
   text-align: center;
   float: right;
-  margin-left: 40px;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: -0.5%;
+  border-radius: 25px;
+}
+
+.not_available_itens{
+  font-size: 40px;
 }
