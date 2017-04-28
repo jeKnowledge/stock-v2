@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    if !logged_in?
+      redirect_to root_path
+    end
   end
 
   def create
@@ -18,13 +21,20 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @cuser_id = current_user.id
+    if logged_in?
+      @cuser_id = current_user.id
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
     @item = Item.find(params[:id])
-
+    if !logged_in?
+      redirect_to root_path
+    end
   end
+
 
   def update
     @item = Item.find(params[:id])
@@ -46,7 +56,7 @@ class ItemsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @item = Item.find(params[:id])
     @item.destroy

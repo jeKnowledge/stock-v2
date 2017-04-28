@@ -24,8 +24,7 @@
 
   <% @items.each do |item| %>
     <% if item.state && (@cuser_id != item.user_id) %>
-      <li>
-        <p style="text-align:left;" class="not_avaliable_itens"> 
+      <li class="not_available_items">
           &nbsp;
           <%= item.name %>
           <span style="float:right;"> 

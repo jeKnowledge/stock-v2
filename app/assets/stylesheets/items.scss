@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 input.btn.btn-primary {
   font-size: 30px;
   font-weight: 900;
@@ -16,6 +17,7 @@ input.btn.btn-primary {
   float: left;
 }
 
+
 .items{
 
   li{
@@ -29,7 +31,10 @@ input.btn.btn-primary {
     margin-top: 10px;
 
   }
-  
+
+  .not_available_items{
+  }
+
   h1{
     text-align: left;
     font-size: 60px;
@@ -49,6 +54,3 @@ input.btn.btn-primary {
   border-radius: 25px;
 }
 
-.not_available_itens{
-  font-size: 40px;
-}

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
-      redirect_to @user
+      redirect_to root_path
     else
       render 'new'
     end
@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if !logged_in?
+      redirect_to root_path
+    end
   end
 
   def update
