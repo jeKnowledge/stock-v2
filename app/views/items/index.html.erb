@@ -25,13 +25,12 @@
   <% @items.each do |item| %>
     <% if item.state && (@cuser_id != item.user_id) %>
       <li class="not_available_items">
-          &nbsp;
-          <%= item.name %>
-          <span style="float:right;"> 
-            <%= User.find(item.user_id).name %>
-            <br>
-          </span>
-        </p>
+        &nbsp;
+        <%= item.name %>
+        <span style="float:right;"> 
+          <%= User.find(item.user_id).name %>
+          <br>
+        </span>
       </li>
     <% end %>
   <% end %>
@@ -42,9 +41,11 @@
       <li>
         &nbsp;
         <%= item.name %>
-        <div style="display:inline-block;" class="items_display">
-          <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>
-        </div>
+        <% if @cuser_admin %>
+          <div style="display:inline-block;" class="items_display">
+            <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>
+          </div>
+        <% end %>
         <div style="display:inline-block;" class="items_display">
           <%= button_to "Aquire", items_update_path(item.id), class: "btn btn-primary", method: :put %>
         </div>
