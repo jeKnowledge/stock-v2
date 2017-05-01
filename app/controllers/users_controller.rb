@@ -20,6 +20,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def index
+    @users = User.all
+    if logged_in? && admin_user?
+      @user_admin = current_user.admin
+    else
+      flash[:danger] = "You are not a admin"
+      redirect_to root_path
+    end
+  end
+
   def edit
     @user = User.find(params[:id])
     if !logged_in?
@@ -35,6 +45,20 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user_items = user.items
+    user_items.each do |item|
+      item.state = false
+      item.user_id = nil 
+      item.save
+    end
+    user.items.where(user_id: user.id).destroy_all
+    user.destroy
+    flash[:success] = "User deleted"
+    redirect_to users_path
   end
 
   private

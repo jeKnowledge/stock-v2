@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
     @items = Item.all
     if logged_in?
       @cuser_id = current_user.id
+      @cuser_admin = current_user.admin
     else
       redirect_to root_path
     end
@@ -43,7 +44,7 @@ class ItemsController < ApplicationController
     if @item.state
       @item.user_id = current_user.id
     else
-      @item.user_id = 1
+      @item.user_id = nil
     end
     if @item.update_attributes(item_params_update)
       if @item.state

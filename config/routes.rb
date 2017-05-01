@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   
   delete '/items/:id', to: 'items#destroy', as: 'delete_item'
 
+  delete '/users/:id', to: 'users#destroy', as: 'delete_user'
+
   resources :users
   resources :items 
 
