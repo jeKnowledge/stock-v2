@@ -6,11 +6,11 @@
     <span style="float:right;"> User </span> 
   </h1>
 
-  <% @items.each do |item| %>
+  <% @non_repetetive_items.each do |item, quantity| %>
     <% if item.state && (@cuser_id != item.user_id) %>
       <li class="not_available_items">
         &nbsp;
-        <%= item.name %>
+        <%= quantity %> - <%= item.name %>
         <span style="float:right;"> 
           <%= User.find(item.user_id).name %>
           <br>

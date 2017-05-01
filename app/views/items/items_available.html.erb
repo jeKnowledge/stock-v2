@@ -4,11 +4,11 @@
 <ul class="items">
 
   <h1>Itens available</h1>
-  <% @items.each do |item| %>
+  <% @non_repetetive_items.each do |item, quantity| %>
     <% if !item.state %>
       <li>
         &nbsp;
-        <%= item.name %>
+        <%= quantity %> - <%= item.name %>
         <% if @cuser_admin %>
           <div style="display:inline-block;" class="items_display">
             <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>

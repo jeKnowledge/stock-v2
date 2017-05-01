@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/items_available', to: 'items#items_available'
   delete '/items/:id', to: 'items#destroy', as: 'delete_item'
 
+  get '/teste', to:'items#index_2'
+
   delete '/users/:id', to: 'users#destroy', as: 'delete_user'
 
   resources :users
