@@ -1,0 +1,11 @@
+<% provide(:title, "Your Itens") %>
+
+<ul class="items">
+
+  <h1> Your Itens </h1>
+  <% @items.each do |item| %>
+    <li>
+      <%= item.name %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,22 @@
+<% provide(:title, 'All Itens') %>
+
+<ul class="items">
+
+  <h1>Your itens</h1>
+  <% @items.each do |item| %>
+    <% if item.state && (@cuser_id == item.user_id)%>
+      <li>
+        &nbsp;
+        <%= item.name %>
+        <% if @cuser_admin %>
+          <div  style="display:inline-block;" class="items_display">
+            <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>
+          </div>
+        <% end %>
+        <div  style="display:inline-block;" class="items_display">
+          <%= button_to "Return", items_update_path(item.id), class: "btn btn-primary", method: :put %>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

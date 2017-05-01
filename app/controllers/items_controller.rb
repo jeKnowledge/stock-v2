@@ -10,16 +10,47 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params_new)
     @item.state = false
-    @item.user_id = 1
+    @item.user_id = nil
 
     if @item.save
-      redirect_to items_path
+      flash[:success] = "Item created"
+      redirect_to '/new_item'
     else
       render 'new'
     end
   end
 
   def index
+    @items = Item.all
+    if logged_in?
+      @cuser_id = current_user.id
+      @cuser_admin = current_user.admin
+    else
+      redirect_to root_path
+    end
+  end
+
+  def your_items
+    @items = Item.all
+    if logged_in?
+      @cuser_id = current_user.id
+      @cuser_admin = current_user.admin
+    else
+      redirect_to root_path
+    end
+  end
+
+  def items_not_available
+    @items = Item.all
+    if logged_in?
+      @cuser_id = current_user.id
+      @cuser_admin = current_user.admin
+    else
+      redirect_to root_path
+    end
+  end
+
+  def items_available
     @items = Item.all
     if logged_in?
       @cuser_id = current_user.id
@@ -52,7 +83,12 @@ class ItemsController < ApplicationController
       else 
         flash[:success] = "You returned the item"
       end
-      redirect_to '/items' 
+
+      if @item.state
+        redirect_to '/items_available' 
+      else 
+        redirect_to '/your_items'
+      end
     else
       render 'edit'
     end
