@@ -99,37 +99,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def index_2
-    t = 0
-    @non_repetetive_items = Hash.new
-    @items = Item.all
-    @items.each do |i_1|
-=begin
-      flag = true
-      @non_repetetive_items.keys.each do |n_r_i|
-        if n_r_i.name.eql?i_1.name
-          flag = false
-        end
-      end
-=end
-      if !hash_has_name?(@non_repetetive_items, i_1) 
-        @items.each do |i_2| 
-          if i_1.name == i_2.name
-            t += 1
-          end
-        end
-        @non_repetetive_items[i_1] = t
-      end
-      t = 0
-    end
-    if logged_in?
-      @cuser_id = current_user.id
-      @cuser_admin = current_user.admin
-    else
-      redirect_to root_path
-    end
-  end
-
   def items_available
     t = 0
     @non_repetetive_items = Hash.new
