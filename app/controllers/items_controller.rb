@@ -10,8 +10,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params_new)
-    @item.state = false
-    @item.user_id = nil
+
+    (@item.amount).times do |x|
+      @item = Item.new(item_params_new)
+      @item.save
+    end
 
     if @item.save
       flash[:success] = "Item created"
@@ -167,7 +170,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params_new
-    params.require(:item).permit(:name, :state, :user_id)
+    params.require(:item).permit(:name, :state, :user_id, :amount)
   end
   def item_params_update
     params.permit(:name,:state, :user_id)
