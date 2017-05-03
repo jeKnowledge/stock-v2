@@ -62,9 +62,9 @@ class ItemsController < ApplicationController
     @non_repetetive_items = Hash.new
     @items = Item.all
     @items.each do |i_1|
-      if !hash_has_name?(@non_repetetive_items, i_1) && i_1.state && current_user.id != i_1.user_id
+      if !hash_has_name_not_available?(@non_repetetive_items, i_1) && i_1.state && current_user.id != i_1.user_id
         @items.each do |i_2| 
-          if i_1.name == i_2.name && i_2.state && current_user.id != i_2.user_id 
+          if i_1.name == i_2.name && i_2.state && current_user.id != i_2.user_id && i_1.user_id == i_2.user_id
             t += 1
           end
         end
