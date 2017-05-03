@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @number = 0
     if !logged_in?
       redirect_to root_path
     end
@@ -159,6 +160,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
+    flash[:success] = "Item was deleted"
     redirect_to '/items_available'
   end
 
