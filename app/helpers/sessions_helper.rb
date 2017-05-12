@@ -56,4 +56,16 @@ module SessionsHelper
     end
     flag
   end
+
+  #returns true if user has items to return
+  def user_has_items_to_return?
+    if user_items?
+      current_user.items.each do |i|
+        if i.deadline < DateTime.now
+          return true
+        end
+      end
+    end
+    false
+  end
 end
