@@ -1,0 +1,20 @@
+<% provide(:title, 'All Itens') %>
+
+<ul class="items">
+
+  <h1 style="text-align:left;">Itens not available
+    <span style="float:right;"> User </span> 
+  </h1>
+
+  <% @non_repetetive_items.each do |item, quantity| %>
+    <% if item.state && (@cuser_id != item.user_id) %>
+      <li class="not_available_items">
+        &nbsp;
+        <%= quantity %> - <%= item.name %>
+        <span style="float:right;"> 
+          <%= User.find(item.user_id).name %>
+          <br>
+        </span>
+      </li>
+    <% end %>
+  <% end %>
