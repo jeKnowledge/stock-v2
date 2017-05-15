@@ -20,4 +20,15 @@ module WaitingQueueHelper
     end
   end
 
+  def is_item_available?(item)
+    items = Item.all
+
+    items.each do |i|
+      if i.name.eql?item.name and !i.state
+        return true
+      end
+    end 
+    false
+  end
+
 end

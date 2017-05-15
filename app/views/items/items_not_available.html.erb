@@ -10,10 +10,11 @@
         &nbsp;
         <%= item.name %>
         <div style="display:inline-block;" class="items_display">
-          <% if !is_user_waiting_for_item?(item) %>
-            <%= button_to "I want this item", create_waiting_queue_path(waiting_queue: {user_id: current_user.id, item_id: item.id}), class: "btn btn-primary", method: :post %>
-          <% else %>
+          <% if is_user_waiting_for_item?(item) %>
             <%= button_to "I dont want this item", delete_waiting_queue_path(id: id_given_user_item(item)), class: "btn btn-primary", method: :delete %>
+          <% end %>
+          <%if !is_user_waiting_for_item?(item) && !is_item_available?(item)%>
+            <%= button_to "I want this item", create_waiting_queue_path(waiting_queue: {user_id: current_user.id, item_id: item.id}), class: "btn btn-primary", method: :post %>
           <% end %>
         </div>
         <br>

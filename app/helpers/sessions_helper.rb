@@ -70,7 +70,7 @@ module SessionsHelper
   end
 
   #return true if item in waiting list is available to the current user
-  def item_is_available?
+  def is_requested_item_available?
     waiting_queue = WaitingQueue.all
     flag = false
 
@@ -82,4 +82,6 @@ module SessionsHelper
     end
     flag
   end
+
+
 end

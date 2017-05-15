@@ -10,9 +10,8 @@ class SessionsController < ApplicationController
       if user_has_items_to_return?
         flash[:danger] = 'You have items to be returned'
       end
-      if item_is_available?
+      if is_requested_item_available?
         flash[:success] = "Item that you want is now available"
-        
       end
       redirect_to root_path
     else
