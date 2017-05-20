@@ -30,7 +30,7 @@ module SessionsHelper
   def user_items?
     !current_user.items.empty?
   end
-  
+
   #returns true if there is any item available
   def available_items
     flag = false
@@ -43,7 +43,7 @@ module SessionsHelper
     end
     flag
   end
-  
+
   #returns true if there is any item not available
   def not_available_items
     flag = false
@@ -56,4 +56,32 @@ module SessionsHelper
     end
     flag
   end
+
+  #returns true if user has items to return
+  def user_has_items_to_return?
+    if user_items?
+      current_user.items.each do |i|
+        if i.deadline < DateTime.now
+          return true
+        end
+      end
+    end
+    false
+  end
+
+  #return true if item in waiting list is available to the current user
+  def is_requested_item_available?
+    waiting_queue = WaitingQueue.all
+    flag = false
+
+    waiting_queue.each do |w|
+      if w.user_id == current_user.id && !Item.find(w.item_id).state
+        flag = true
+        w.destroy
+      end
+    end
+    flag
+  end
+
+
 end

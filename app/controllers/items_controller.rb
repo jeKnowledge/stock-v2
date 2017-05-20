@@ -140,8 +140,10 @@ class ItemsController < ApplicationController
 
     if @item.state
       @item.user_id = current_user.id
+      @item.deadline = DateTime.now
     else
       @item.user_id = nil
+      @item.deadline = nil
     end
     if @item.update_attributes(item_params_update)
       if @item.state
@@ -172,6 +174,7 @@ class ItemsController < ApplicationController
   def item_params_new
     params.require(:item).permit(:name, :state, :user_id, :amount)
   end
+
   def item_params_update
     params.permit(:name,:state, :user_id)
   end

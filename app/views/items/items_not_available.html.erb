@@ -2,19 +2,26 @@
 
 <ul class="items">
 
-  <h1 style="text-align:left;">Itens not available
-    <span style="float:right;"> User </span> 
-  </h1>
+  <h1 style="text-align:left;">Itens not available</h1>
 
   <% @non_repetetive_items.each do |item, quantity| %>
     <% if item.state && (@cuser_id != item.user_id) %>
       <li class="not_available_items">
         &nbsp;
-        <%= quantity %> - <%= item.name %>
-        <span style="float:right;"> 
-          <%= User.find(item.user_id).name %>
-          <br>
-        </span>
-      </li>
-    <% end %>
+        <%= item.name %>
+        <div style="display:inline-block;" class="items_display">
+          <% if is_user_waiting_for_item?(item) %>
+            <%= button_to "I dont want this item", delete_waiting_queue_path(id: id_given_user_item(item)), class: "btn btn-primary", method: :delete %>
+          <% end %>
+          <%if !is_user_waiting_for_item?(item) && !is_item_available?(item)%>
+            <%= button_to "I want this item", create_waiting_queue_path(waiting_queue: {user_id: current_user.id, item_id: item.id}), class: "btn btn-primary", method: :post %>
+          <% end %>
+        </div>
+        <br>
+        &nbsp; User - <%= User.find(item.user_id).name %>
+      <br>
+      &nbsp; Quantity - <%= quantity %>
+    </li>
   <% end %>
+<% end %>
+</ul>

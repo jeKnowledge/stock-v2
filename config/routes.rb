@@ -20,9 +20,11 @@ Rails.application.routes.draw do
 
   delete '/users/:id', to: 'users#destroy', as: 'delete_user'
 
+  post '/create_waiting_queue', to: 'waiting_queue#create', as: 'create_waiting_queue'
+
+  delete '/delete_waiting_queue', to: 'waiting_queue#destroy', as: 'delete_waiting_queue'
+
   resources :users
   resources :items 
-
-
 
 end
