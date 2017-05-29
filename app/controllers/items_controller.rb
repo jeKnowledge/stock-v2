@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @number = 0
-    if !logged_in?
+    if !logged_in? || !admin_user?
       redirect_to root_path
     end
   end
