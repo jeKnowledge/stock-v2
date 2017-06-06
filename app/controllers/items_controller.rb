@@ -178,4 +178,5 @@ class ItemsController < ApplicationController
   def item_params_update
     params.permit(:name,:state, :user_id)
   end
+
 end

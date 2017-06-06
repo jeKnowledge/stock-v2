@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get '/new_item', to: 'items#new'
   put 'items/:id', to: 'items#update', as: 'items_update'
-  
+
   get '/your_items', to: 'items#your_items'
   get '/items_not_available', to: 'items#items_not_available'
   get '/items_available', to: 'items#items_available'
