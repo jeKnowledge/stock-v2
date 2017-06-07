@@ -126,6 +126,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def setup_aquire
+    @item = Item.find(params[:id])
+  end
+
+  def setup_return
+    @item = Item.find(params[:id])
+  end
+
   def edit
     @item = Item.find(params[:id])
     if !logged_in?
@@ -135,30 +143,33 @@ class ItemsController < ApplicationController
 
 
   def update
+    @item_amount = item_params_new[:amount]
     @item = Item.find(params[:id])
-    @item.state = !@item.state
+    @item_state = @item.state
+    k = 0
 
-    if @item.state
-      @item.user_id = current_user.id
-      @item.deadline = DateTime.now
-    else
-      @item.user_id = nil
-      @item.deadline = nil
+    Item.all.each do |i|
+      if (i.name.eql?@item.name and @item_state == i.state) 
+        if !i.state 
+          i.user_id = current_user.id
+          i.deadline = DateTime.now
+        else
+          i.user_id = nil
+          i.deadline = nil
+        end
+        i.state = !i.state
+        i.update_attributes(item_params_update)
+        k += 1
+      end
+      break if k >= @item_amount.to_f
     end
-    if @item.update_attributes(item_params_update)
-      if @item.state
-        flash[:success] = "You aquired the item"
-      else 
-        flash[:success] = "You returned the item"
-      end
 
-      if @item.state
-        redirect_to '/items_available' 
-      else 
-        redirect_to '/your_items'
-      end
-    else
-      render 'edit'
+    if !@item.state
+      flash[:success] = "You aquired the itens"
+      redirect_to '/items_available' 
+    else 
+      flash[:success] = "You returned the item"
+      redirect_to '/your_items'
     end
   end
 
