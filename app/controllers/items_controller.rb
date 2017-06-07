@@ -162,11 +162,26 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
+  def setup_destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    flash[:success] = "Item was deleted"
-    redirect_to '/items_available'
+  end
+
+  def destroy
+    @item_amount = item_params_new[:amount]
+    @item = Item.find(params[:id])
+    @item_name = @item.name
+    j = 0
+
+    Item.all.each do |i|
+      if @item_name.eql?i.name
+        i.destroy
+        j += 1
+      end
+      break if j >= @item_amount.to_f
+    end
+
+    flash[:success] = j
+    redirect_to items_available_path
   end
 
   private
@@ -179,4 +194,8 @@ class ItemsController < ApplicationController
     params.permit(:name,:state, :user_id)
   end
 
+  def item_params_destroy
+    params.require(:item).permit(:amount)
+
+  end
 end

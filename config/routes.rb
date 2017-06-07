@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/your_items', to: 'items#your_items'
   get '/items_not_available', to: 'items#items_not_available'
   get '/items_available', to: 'items#items_available'
+  get '/items/:id', to: 'items#setup_destroy', as: 'setup_delete_item'
   delete '/items/:id', to: 'items#destroy', as: 'delete_item'
 
   get '/teste', to:'items#index_2'
