@@ -10,11 +10,15 @@ Rails.application.routes.draw do
 
   get '/new_item', to: 'items#new'
   put 'items/:id', to: 'items#update', as: 'items_update'
-  
+
   get '/your_items', to: 'items#your_items'
   get '/items_not_available', to: 'items#items_not_available'
   get '/items_available', to: 'items#items_available'
+  get '/items/:id', to: 'items#setup_aquire', as: 'setup_aquire_item'
+  get '/items/:id', to: 'items#setup_return', as: 'setup_return_item'
+  get '/items/:id', to: 'items#setup_destroy', as: 'setup_delete_item'
   delete '/items/:id', to: 'items#destroy', as: 'delete_item'
+
 
   get '/teste', to:'items#index_2'
 

@@ -9,10 +9,10 @@
         &nbsp;
         <%= quantity %> - <%= item.name %>
           <div style="display:inline-block;" class="items_display">
-            <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>
+            <%= button_to "Delete", setup_delete_item_path(item.id), class: "btn btn-primary", method: :get %>
           </div>
         <div style="display:inline-block;" class="items_display">
-          <%= button_to "Aquire", items_update_path(item.id), class: "btn btn-primary", method: :put %>
+          <%= button_to "Aquire", setup_aquire_item_path(item.id), class: "btn btn-primary", method: :get %>
         </div>
       <% end %> 
     </li>

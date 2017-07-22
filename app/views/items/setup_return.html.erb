@@ -1,0 +1,15 @@
+<% provide(:title, 'Return Itens') %>
+<h1>Return Itens</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@item) do |f| %>
+      <%= f.label :amount %>
+      <%= f.number_field :amount, class: 'form-control' %>
+      <br>
+
+      <%= f.submit "Return Itens", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
