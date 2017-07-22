@@ -1,0 +1,20 @@
+FROM ruby:2.3.0-alpine
+
+ENV BUILD_PACKAGES="bash curl-dev build-base nodejs postgresql-dev"
+
+RUN apk update && \
+    apk upgrade && \
+    apk add $BUILD_PACKAGES \
+    rm -rf /var/cache/apk/*
+
+ENV CODE /code
+
+USER root
+
+WORKDIR $CODE
+
+COPY . $CODE
+VOLUME $CODE
+
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]
