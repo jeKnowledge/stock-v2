@@ -1,6 +1,8 @@
 <% provide(:title, "Home") %>
 <div class="center jumbotron">
-  <h1>Welcome to the Stock App</h1>
+  <h1>
+    Welcome to the Stock App
+  </h1>
 
   <h2>
     This is app keeps track of our belongings.
@@ -11,7 +13,6 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <%= form_for(:session, url: login_path) do |f| %>
-
             <%= f.label :email %>
             <%= f.email_field :email, class: 'form-control' %>
 
@@ -24,15 +25,15 @@
           <p>If you are new <%= link_to "Sign up!", signup_path %></p>
         </div>
       </div>
-    <% end %> </div>
+    <% end %> 
+  </div>
   <div>
-    <div>
-      <h4>
+    <h4>
       <%= link_to image_tag("jeknowledge.png", alt: "Jeknowledge logo"),
         'http://jeknowledge.pt/' %>
 
-        <%= link_to image_tag("github.png", alt: "GitHub logo"),
-          'https://github.com/jeKnowledge/stock-v2' %>
-        </h4>
-        </div>
-      </div>
+      <%= link_to image_tag("github.png", alt: "GitHub logo"),
+        'https://github.com/jeKnowledge/stock-v2' %>
+      </h4>
+    </div>
+  </div>

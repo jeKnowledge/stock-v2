@@ -1,9 +1,8 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
 body {
 	padding-top: 120px;
 	padding-left: 10%;
+  padding-right: 10%;
 	width: 50px;
 	background-color: white;
 	color: black;
@@ -29,7 +28,7 @@ textarea {
 	}
 	h3{
 		p{	
-			font-size: 1em;
+			font-size: 0.7em;
 			margin-bottom: 10px;
 			text-align: left;	
 		}

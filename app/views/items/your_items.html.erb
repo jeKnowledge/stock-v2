@@ -2,23 +2,25 @@
 
 <ul class="items">
 
-  <h1>Your itens</h1>
+  <h3>Your itens</h3>
   <% @non_repetetive_items.each do |item, quantity| %>
     <% if item.state && (@cuser_id == item.user_id)%>
       <li>
-        &nbsp; <%= item.name %>
-      <% if @cuser_admin %>
-        <div  style="display:inline-block;" class="items_display">
-          <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>
+        <h3 class="items_text">
+          &nbsp; <%= item.name %>
+        <% if @cuser_admin %>
+          <div  style="display:inline-block;" class="your_items_button">
+            <%= button_to "Delete", delete_item_path(item.id), class: "btn btn-primary", method: :delete %>
+          </div>
+        <% end %>
+        <div  style="display:inline-block;" class="your_items_button">
+          <%= button_to "Return", items_update_path(item.id), class: "btn btn-primary", method: :put %>
         </div>
-      <% end %>
-      <div  style="display:inline-block;" class="items_display">
-        <%= button_to "Return", items_update_path(item.id), class: "btn btn-primary", method: :put %>
-      </div>
+        <br>
+        &nbsp; Quantity - <%= quantity %>
       <br>
-      &nbsp; Quantity - <%= quantity %>
-    <br>
-    &nbsp; Return Date - <%= item.deadline.strftime("%d %B %Y %H:%M") %>
+      &nbsp; Return Date - <%= item.deadline.strftime("%d %B %Y %H:%M") %>
+    </h3>
   </li>
 <% end %>
 <% end %>

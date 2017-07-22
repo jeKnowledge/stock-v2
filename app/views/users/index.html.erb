@@ -1,15 +1,17 @@
 <% provide(:title, 'All users') %>
 
 <ul class="items">
-  <h1>All users</h1>
+  <h3>All users</h3>
   <% @users.each do |user| %>
     <% if user.id != current_user.id %>
       <li>
-        &nbsp;
-        <%= user.name %>
-        <div  style="display:inline-block;" class="items_display"> 
-          <%= button_to "Delete", user, class: "btn btn-primary", method: :delete %>
-        </div>
+        <h3 class="items_text">
+          &nbsp;
+          <%= user.name %>
+          <div  style="display:inline-block;" class="items_display"> 
+            <%= button_to "Delete", user, class: "btn btn-primary", method: :delete %>
+          </div>
+        </h3>
       </li>
     <% end %>
   <% end %>

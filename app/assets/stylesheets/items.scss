@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 input.btn.btn-primary {
-  font-size: 30px;
+  font-size: 17px;
   font-weight: 900;
 }
 
@@ -32,14 +32,27 @@ input.btn.btn-primary {
 
   }
 
-  .not_available_items{
-  }
-
   h1{
     text-align: left;
     font-size: 60px;
     font-weight: 900;
   }
+}
+
+.not_available_items_button{
+
+}
+
+.your_items_button {
+  display: inline-block;;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  float: right;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 1.4%;
+  border-radius: 25px;
 }
 
 .items_display{
@@ -50,7 +63,10 @@ input.btn.btn-primary {
   float: right;
   margin-left: 1%;
   margin-right: 1%;
-  margin-top: -0.5%;
+  margin-top: -0.7%;
   border-radius: 25px;
 }
 
+.items_text {
+  margin-top: 1%;
+}
