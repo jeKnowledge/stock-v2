@@ -1,3 +1,92 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  overflow: hidden;
+  font-family: "Suisse Int'l";
+}
+
+.content{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content h1{
+  font-size: 3em;
+  max-width: 80vw;
+  position: absolute;
+  top: 7vh;
+  text-align: center;
+}
+
+.content form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 40vh;
+  background-color: #8DCBEA;
+  padding: 2vh;
+}
+
+.content form input{
+  margin-bottom: 3em;
+  min-height: 2.8em;
+  max-width: 595px;
+  width: 60%;
+  border-radius: 2px;
+  border: none;
+  padding-left: 5px;
+  min-width: 320px;
+}
+
+.content form input:nth-child(5){
+  margin-top: 2em;
+  margin-bottom: 0;
+  width: 5em;
+  min-width: unset;
+  font-size: 1em;
+  color: white;
+  background-color: #408FBE;
+}
+
+.content form input:nth-child(3){
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 760px){
+  .content h1{
+    font-size: 2.7em;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .content h1 {
+    font-size: 2em;
+  }
+
+  .content form input {
+    margin-bottom: 5vh;
+  }
+
+  .content form input:nth-child(5) {
+    height: 1em;
+    font-size: 0.8em;
+    margin-top: 0.1em;
+
+  }
+
+  .content form input:nth-child(3) {
+    margin-top: 30px;
+  }
+}
